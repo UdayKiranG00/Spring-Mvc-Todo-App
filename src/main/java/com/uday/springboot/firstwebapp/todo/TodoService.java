@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class TodoService {
 	
 	public List<Todo> getTodosByUsername(String username){
 		Predicate<? super Todo> predicate = todo -> todo.getUsername() == username;
-		List<Todo> todoss = todos.stream().filter(predicate).toList();
+		List<Todo> todoss =  (todos.stream().filter(predicate)).toList();
 		return todoss;
 	}
 	
